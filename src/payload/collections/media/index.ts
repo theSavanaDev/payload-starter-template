@@ -1,9 +1,9 @@
-import type { CollectionConfig } from "payload";
-
 import { anyone } from "@/payload-access/anyone";
 import { authenticated } from "@/payload-access/authenticated";
 
-export const Media: CollectionConfig = {
+import type { CollectionConfig } from "payload";
+
+const Media: CollectionConfig = {
 	slug: "media",
 	labels: {
 		singular: "Media",
@@ -30,3 +30,5 @@ export const Media: CollectionConfig = {
 		resizeOptions: { width: 1280 },
 	},
 };
+
+export default Media;

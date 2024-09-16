@@ -14,8 +14,8 @@ import path from "path";
 import sharp from "sharp";
 import { fileURLToPath } from "url";
 
-import { Users } from "./payload/collections/users";
-import { Media } from "./payload/collections/media";
+import Media from "@/payload-collections/media";
+import Users from "@/payload-collections/users";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);

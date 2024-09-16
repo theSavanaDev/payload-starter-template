@@ -1,8 +1,8 @@
-import type { CollectionConfig } from "payload";
-
 import { authenticated } from "@/payload-access/authenticated";
 
-export const Users: CollectionConfig = {
+import type { CollectionConfig } from "payload";
+
+const Users: CollectionConfig = {
 	slug: "users",
 	labels: {
 		singular: "User",
@@ -29,3 +29,5 @@ export const Users: CollectionConfig = {
 		},
 	],
 };
+
+export default Users;
