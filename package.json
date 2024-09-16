@@ -1,52 +1,71 @@
 {
-  "name": "",
-  "version": "1.0.0",
-  "description": "A blank template to get started with Payload 3.0",
-  "license": "MIT",
-  "type": "module",
-  "scripts": {
-    "build": "cross-env NODE_OPTIONS=--no-deprecation next build",
-    "dev": "cross-env NODE_OPTIONS=--no-deprecation next dev",
-    "devsafe": "rm -rf .next && cross-env NODE_OPTIONS=--no-deprecation next dev",
-    "generate:importmap": "cross-env NODE_OPTIONS=--no-deprecation payload generate:importmap",
-    "generate:types": "cross-env NODE_OPTIONS=--no-deprecation payload generate:types",
-    "lint": "cross-env NODE_OPTIONS=--no-deprecation next lint",
-    "payload": "cross-env NODE_OPTIONS=--no-deprecation payload",
-    "start": "cross-env NODE_OPTIONS=--no-deprecation next start"
-  },
-  "dependencies": {
-    "@payloadcms/db-mongodb": "beta",
-    "@payloadcms/next": "beta",
-    "@payloadcms/plugin-cloud": "beta",
-    "@payloadcms/richtext-lexical": "beta",
-    "cross-env": "^7.0.3",
-    "graphql": "^16.8.1",
-    "next": "15.0.0-canary.104",
-    "payload": "beta",
-    "react": "19.0.0-rc-06d0b89e-20240801",
-    "react-dom": "19.0.0-rc-06d0b89e-20240801",
-    "sharp": "0.32.6"
-  },
-  "devDependencies": {
-    "@types/node": "^22.5.4",
-    "@types/react": "npm:types-react@19.0.0-rc.0",
-    "@types/react-dom": "npm:types-react-dom@19.0.0-rc.0",
-    "eslint": "^8",
-    "eslint-config-next": "15.0.0-canary.104",
-    "typescript": "5.6.2"
-  },
-  "engines": {
-    "node": "^18.20.2 || >=20.9.0"
-  },
-  "pnpm": {
-    "overrides": {
-      "@types/react": "npm:types-react@19.0.0-rc.0",
-      "@types/react-dom": "npm:types-react-dom@19.0.0-rc.0"
-    }
-  },
-  "overrides": {
-    "@types/react": "npm:types-react@19.0.0-rc.0",
-    "@types/react-dom": "npm:types-react-dom@19.0.0-rc.0"
-  },
-  "packageManager": "pnpm@9.10.0+sha512.73a29afa36a0d092ece5271de5177ecbf8318d454ecd701343131b8ebc0c1a91c487da46ab77c8e596d6acf1461e3594ced4becedf8921b074fbd8653ed7051c"
+	"name": "payload-starter-template",
+	"version": "1.0.0",
+	"description": "A blank template to get started with Payload 3.0",
+	"license": "MIT",
+	"type": "module",
+	"scripts": {
+		"build": "cross-env NODE_OPTIONS=--no-deprecation next build",
+		"dev": "cross-env NODE_OPTIONS=--no-deprecation next dev",
+		"devsafe": "rm -rf .next && cross-env NODE_OPTIONS=--no-deprecation next dev",
+		"generate:importmap": "cross-env NODE_OPTIONS=--no-deprecation payload generate:importmap",
+		"generate:types": "cross-env NODE_OPTIONS=--no-deprecation payload generate:types",
+		"lint": "cross-env NODE_OPTIONS=--no-deprecation next lint",
+		"payload": "cross-env NODE_OPTIONS=--no-deprecation payload",
+		"start": "cross-env NODE_OPTIONS=--no-deprecation next start"
+	},
+	"dependencies": {
+		"@payloadcms/db-mongodb": "beta",
+		"@payloadcms/email-resend": "beta",
+		"@payloadcms/live-preview-react": "beta",
+		"@payloadcms/next": "beta",
+		"@payloadcms/plugin-cloud": "beta",
+		"@payloadcms/plugin-seo": "beta",
+		"@payloadcms/richtext-lexical": "beta",
+		"@payloadcms/storage-uploadthing": "beta",
+		"@radix-ui/react-slot": "^1.1.0",
+		"class-variance-authority": "^0.7.0",
+		"clsx": "^2.1.1",
+		"cross-env": "^7.0.3",
+		"framer-motion": "^11.5.4",
+		"graphql": "^16.9.0",
+		"jsonwebtoken": "^9.0.2",
+		"lucide-react": "^0.441.0",
+		"next": "15.0.0-canary.104",
+		"next-themes": "^0.3.0",
+		"payload": "beta",
+		"react": "19.0.0-rc-06d0b89e-20240801",
+		"react-dom": "19.0.0-rc-06d0b89e-20240801",
+		"resend": "^3.5.0",
+		"sharp": "0.32.6",
+		"tailwind-merge": "^2.5.2",
+		"tailwindcss-animate": "^1.0.7"
+	},
+	"devDependencies": {
+		"@tailwindcss/typography": "^0.5.15",
+		"@types/jsonwebtoken": "^9.0.6",
+		"@types/node": "^22.5.5",
+		"@types/react": "npm:types-react@19.0.0-rc.0",
+		"@types/react-dom": "npm:types-react-dom@19.0.0-rc.0",
+		"eslint": "^8.57.0",
+		"eslint-config-next": "15.0.0-canary.104",
+		"prettier": "^3.3.3",
+		"prettier-plugin-tailwindcss": "^0.6.6",
+		"tailwindcss": "^3.4.11",
+		"typescript": "5.6.2"
+	},
+	"engines": {
+		"node": "^18.20.2 || >=20.9.0"
+	},
+	"pnpm": {
+		"overrides": {
+			"@types/react": "npm:types-react@19.0.0-rc.0",
+			"@types/react-dom": "npm:types-react-dom@19.0.0-rc.0"
+		}
+	},
+	"overrides": {
+		"@types/react": "npm:types-react@19.0.0-rc.0",
+		"@types/react-dom": "npm:types-react-dom@19.0.0-rc.0"
+	},
+	"packageManager": "pnpm@9.10.0+sha512.73a29afa36a0d092ece5271de5177ecbf8318d454ecd701343131b8ebc0c1a91c487da46ab77c8e596d6acf1461e3594ced4becedf8921b074fbd8653ed7051c"
 }

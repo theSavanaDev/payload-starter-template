@@ -1,35 +1,118 @@
-// storage-adapter-import-placeholder
-import { mongooseAdapter } from '@payloadcms/db-mongodb'
-import { lexicalEditor } from '@payloadcms/richtext-lexical'
-import path from 'path'
-import { buildConfig } from 'payload'
-import { fileURLToPath } from 'url'
-import sharp from 'sharp'
+import { mongooseAdapter } from "@payloadcms/db-mongodb";
+import { resendAdapter } from "@payloadcms/email-resend";
+import {
+	BoldFeature,
+	ItalicFeature,
+	LinkFeature,
+	lexicalEditor,
+	UnderlineFeature,
+} from "@payloadcms/richtext-lexical";
+import { seoPlugin } from "@payloadcms/plugin-seo";
+import { uploadthingStorage } from "@payloadcms/storage-uploadthing";
+import { buildConfig } from "payload";
+import path from "path";
+import sharp from "sharp";
+import { fileURLToPath } from "url";
 
-import { Users } from './collections/Users'
-import { Media } from './collections/Media'
+import { Users } from "./payload/collections/users";
+import { Media } from "./payload/collections/media";
 
-const filename = fileURLToPath(import.meta.url)
-const dirname = path.dirname(filename)
+const filename = fileURLToPath(import.meta.url);
+const dirname = path.dirname(filename);
+const databaseURI =
+	process.env.NODE_ENV === "development"
+		? process.env.DATABASE_URI_DEV!
+		: process.env.DATABASE_URI_PRD!;
+const payloadSecret = process.env.PAYLOAD_SECRET!;
+const resendAPIKey = process.env.RESEND_API_KEY!;
+const uploadthingSecret = process.env.UPLOADTHING_SECRET!;
+const publicURL =
+	process.env.NODE_ENV === "development"
+		? process.env.NEXT_PUBLIC_SERVER_URL_DEV!
+		: process.env.NEXT_PUBLIC_SERVER_URL_PRD!;
 
 export default buildConfig({
-  admin: {
-    user: Users.slug,
-    importMap: {
-      baseDir: path.resolve(dirname),
-    },
-  },
-  collections: [Users, Media],
-  editor: lexicalEditor(),
-  secret: process.env.PAYLOAD_SECRET || '',
-  typescript: {
-    outputFile: path.resolve(dirname, 'payload-types.ts'),
-  },
-  db: mongooseAdapter({
-    url: process.env.DATABASE_URI || '',
-  }),
-  sharp,
-  plugins: [
-    // storage-adapter-placeholder
-  ],
-})
+	admin: {
+		importMap: {
+			baseDir: path.resolve(dirname),
+		},
+		livePreview: {
+			breakpoints: [
+				{
+					label: "Mobile",
+					name: "mobile",
+					width: 375,
+					height: 667,
+				},
+				{
+					label: "Tablet",
+					name: "tablet",
+					width: 768,
+					height: 1024,
+				},
+				{
+					label: "Desktop",
+					name: "desktop",
+					width: 1440,
+					height: 900,
+				},
+			],
+		},
+		user: Users.slug,
+	},
+	collections: [Media, Users],
+	db: mongooseAdapter({ url: databaseURI }),
+	editor: lexicalEditor({
+		features: () => {
+			return [
+				BoldFeature(),
+				ItalicFeature(),
+				LinkFeature({
+					enabledCollections: [],
+					fields: ({ defaultFields }) => {
+						const defaultFieldsWithoutUrl = defaultFields.filter((field) => {
+							if ("name" in field && field.name === "url") return false;
+							return true;
+						});
+						return [
+							...defaultFieldsWithoutUrl,
+							{
+								name: "url",
+								type: "text",
+								admin: {
+									condition: ({ linkType }) => linkType !== "internal",
+								},
+								label: ({ t }) => t("fields:enterURL"),
+								required: true,
+							},
+						];
+					},
+				}),
+				UnderlineFeature(),
+			];
+		},
+	}),
+	email: resendAdapter({
+		defaultFromAddress: "mta@s3.co.ke",
+		defaultFromName: "MTA @ S3",
+		apiKey: resendAPIKey,
+	}),
+	globals: [],
+	plugins: [
+		seoPlugin({}),
+		uploadthingStorage({
+			collections: {
+				[Media.slug]: true,
+			},
+			options: {
+				apiKey: uploadthingSecret,
+				acl: "public-read",
+			},
+		}),
+	],
+	secret: payloadSecret,
+	sharp,
+	typescript: {
+		outputFile: path.resolve(dirname, "payload-types.ts"),
+	},
+});

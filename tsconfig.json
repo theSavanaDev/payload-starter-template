@@ -1,11 +1,7 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -23,22 +19,22 @@
       }
     ],
     "paths": {
-      "@/*": [
-        "./src/*"
-      ],
-      "@payload-config": [
-        "./src/payload.config.ts"
-      ]
+      "@/*": ["./src/*"],
+      "@/blocks/*": ["./src/blocks/*"],
+			"@/components/*": ["./src/components/*"],
+			"@/frontend/*": ["src/app/(frontend)/*"],
+			"@/lib/*": ["./src/lib/*"],
+			"@/payload-access/*": ["./src/payload/access/*"],
+			"@/payload-blocks/*": ["./src/payload/blocks/*"],
+			"@/payload-collections/*": ["./src/payload/collections/*"],
+			"@/payload-fields/*": ["./src/payload/fields/*"],
+			"@/payload-globals/*": ["./src/payload/globals/*"],
+			"@/payload-hooks/*": ["./src/payload/hooks/*"],
+			"@/payload-utilities/*": ["./src/payload/utilities/*"],
+      "@payload-config": ["./src/payload.config.ts"]
     },
     "target": "ES2017"
   },
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    ".next/types/**/*.ts"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "exclude": ["node_modules"]
 }
