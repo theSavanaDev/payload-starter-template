@@ -17,6 +17,8 @@ import { fileURLToPath } from "url";
 import Media from "@/payload-collections/media";
 import Users from "@/payload-collections/users";
 
+import { GenerateTitle, GenerateURL } from "@payloadcms/plugin-seo/types";
+
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
 const databaseURI =
@@ -30,6 +32,14 @@ const publicURL =
 	process.env.NODE_ENV === "development"
 		? process.env.NEXT_PUBLIC_SERVER_URL_DEV!
 		: process.env.NEXT_PUBLIC_SERVER_URL_PRD!;
+
+// const generateTitle: GenerateTitle<Page | Post> = ({ doc }) => {
+// 	return doc?.title ? `${doc.title} | Payload Starter` : "Payload Starter";
+// };
+
+// const generateURL: GenerateURL<Page | Post> = ({ doc }) => {
+// 	return doc?.slug ? `${publicURL}/${doc.slug}` : publicURL;
+// };
 
 export default buildConfig({
 	admin: {
