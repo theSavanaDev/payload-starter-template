@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
-import LayoutContainer from "@/components/layout-container";
+import LayoutContainer from "@/components/LayoutContainer";
 
 const NotFound = () => {
 	return (
