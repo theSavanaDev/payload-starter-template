@@ -9,7 +9,7 @@ const HomePage = () => {
 			<article>
 				<section className="pb-36 pt-36">
 					<h1 className="text-4xl font-bold tracking-wide text-sky-800">
-						Your settings are well configured
+						Payload Starter Template
 					</h1>
 
 					<p className="my-5">

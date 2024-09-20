@@ -20,11 +20,11 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
 					enableSystem
 					disableTransitionOnChange
 				>
-					<header>Header Goes Here</header>
+					<header className="text-center">Header Goes Here</header>
 
 					<main>{children}</main>
 
-					<footer className="mt-auto">Footer Goes Here</footer>
+					<footer className="mt-auto text-center">Footer Goes Here</footer>
 				</ThemeProvider>
 			</body>
 		</html>

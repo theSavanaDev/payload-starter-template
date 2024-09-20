@@ -27,7 +27,7 @@
 		"class-variance-authority": "^0.7.0",
 		"clsx": "^2.1.1",
 		"cross-env": "^7.0.3",
-		"framer-motion": "^11.5.4",
+		"framer-motion": "^11.5.5",
 		"graphql": "^16.9.0",
 		"jsonwebtoken": "^9.0.2",
 		"lucide-react": "^0.441.0",
