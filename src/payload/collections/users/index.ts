@@ -1,5 +1,7 @@
 import { authenticated } from "@/payload-access/authenticated";
 
+import populateFullName from "@/payload-collections/users/hooks/populateFullName";
+
 import type { CollectionConfig } from "payload";
 
 const Users: CollectionConfig = {
@@ -9,8 +11,8 @@ const Users: CollectionConfig = {
 		plural: "Users",
 	},
 	admin: {
-		defaultColumns: ["name", "email", "createdAt"],
-		useAsTitle: "name",
+		defaultColumns: ["firstName", "lastName", "email", "createdAt"],
+		useAsTitle: "fullName",
 	},
 	access: {
 		admin: authenticated,
@@ -22,10 +24,38 @@ const Users: CollectionConfig = {
 	auth: true,
 	fields: [
 		{
-			name: "name",
-			label: "Name",
+			type: "row",
+			fields: [
+				{
+					name: "firstName",
+					label: "First Name",
+					type: "text",
+					required: true,
+					admin: {
+						width: "50%",
+					},
+				},
+				{
+					name: "lastName",
+					label: "Last Name",
+					type: "text",
+					required: true,
+					admin: {
+						width: "50%",
+					},
+				},
+			],
+		},
+		{
+			name: "fullName",
+			label: "Full Name",
 			type: "text",
-			required: true,
+			admin: {
+				hidden: true,
+			},
+			hooks: {
+				beforeValidate: [populateFullName],
+			},
 		},
 	],
 };

@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
-import LayoutContainer from "@/components/LayoutContainer";
+import LayoutContainer from "@/components/layout-container";
 
 const HomePage = () => {
 	return (
