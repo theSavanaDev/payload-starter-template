@@ -8,7 +8,7 @@ import "@/frontend/global.css";
 
 const fontSans = FontSans({ subsets: ["latin"], variable: "--font-sans" });
 
-const RootLayout = ({ children }: { children: React.ReactNode }) => {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
 	return (
 		<html lang="en" suppressHydrationWarning>
 			<body
@@ -29,6 +29,4 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
 			</body>
 		</html>
 	);
-};
-
-export default RootLayout;
+}
