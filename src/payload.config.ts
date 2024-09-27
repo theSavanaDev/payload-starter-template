@@ -109,7 +109,9 @@ export default buildConfig({
 	}),
 	globals: [],
 	plugins: [
-		seoPlugin({}),
+		seoPlugin({
+			/* generateTitle, generateURL */
+		}),
 		uploadthingStorage({
 			collections: {
 				[Media.slug]: true,
