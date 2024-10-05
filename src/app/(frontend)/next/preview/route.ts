@@ -16,6 +16,7 @@ export async function GET(
 	const token = req.cookies.get(payloadToken)?.value;
 	const { searchParams } = new URL(req.url);
 	const path = searchParams.get("path");
+	const draftModeValue = await draftMode();
 
 	if (!path) {
 		return new Response("No path has been provided.", { status: 404 });
@@ -28,10 +29,13 @@ export async function GET(
 	const user = jwt.decode(token, { complete: true });
 
 	if (!user) {
-		draftMode().disable();
+		const draftModeValue = await draftMode();
+
+		draftModeValue.disable();
+
 		return new Response("You are not allowed to preview this page.", { status: 403 });
 	}
 
-	draftMode().enable();
+	draftModeValue.enable();
 	redirect(path);
 }
