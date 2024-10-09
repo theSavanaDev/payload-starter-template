@@ -20,6 +20,7 @@
 		"@payloadcms/live-preview-react": "beta",
 		"@payloadcms/next": "beta",
 		"@payloadcms/plugin-cloud": "beta",
+		"@payloadcms/plugin-form-builder": "beta",
 		"@payloadcms/plugin-seo": "beta",
 		"@payloadcms/richtext-lexical": "beta",
 		"@payloadcms/storage-uploadthing": "beta",
@@ -27,7 +28,7 @@
 		"class-variance-authority": "^0.7.0",
 		"clsx": "^2.1.1",
 		"cross-env": "^7.0.3",
-		"framer-motion": "^11.11.1",
+		"framer-motion": "^11.11.4",
 		"graphql": "^16.9.0",
 		"jsonwebtoken": "^9.0.2",
 		"lucide-react": "^0.441.0",
@@ -36,6 +37,7 @@
 		"payload": "beta",
 		"react": "19.0.0-rc-3edc000d-20240926",
 		"react-dom": "19.0.0-rc-3edc000d-20240926",
+		"react-hook-form": "^7.53.0",
 		"resend": "^3.5.0",
 		"sharp": "0.32.6",
 		"tailwind-merge": "^2.5.3",
@@ -44,7 +46,7 @@
 	"devDependencies": {
 		"@tailwindcss/typography": "^0.5.15",
 		"@types/jsonwebtoken": "^9.0.7",
-		"@types/node": "^22.7.4",
+		"@types/node": "^22.7.5",
 		"@types/react": "npm:types-react@19.0.0-rc.0",
 		"@types/react-dom": "npm:types-react-dom@19.0.0-rc.0",
 		"eslint": "^8.57.1",
@@ -66,6 +68,5 @@
 	"overrides": {
 		"@types/react": "npm:types-react@19.0.0-rc.0",
 		"@types/react-dom": "npm:types-react-dom@19.0.0-rc.0"
-	},
-	"packageManager": "pnpm@9.10.0+sha512.73a29afa36a0d092ece5271de5177ecbf8318d454ecd701343131b8ebc0c1a91c487da46ab77c8e596d6acf1461e3594ced4becedf8921b074fbd8653ed7051c"
+	}
 }

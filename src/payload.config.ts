@@ -2,11 +2,16 @@ import { mongooseAdapter } from "@payloadcms/db-mongodb";
 import { resendAdapter } from "@payloadcms/email-resend";
 import {
 	BoldFeature,
+	FixedToolbarFeature,
+	HeadingFeature,
 	ItalicFeature,
 	LinkFeature,
 	lexicalEditor,
+	OrderedListFeature,
 	UnderlineFeature,
+	UnorderedListFeature,
 } from "@payloadcms/richtext-lexical";
+import { formBuilderPlugin } from "@payloadcms/plugin-form-builder";
 import { seoPlugin } from "@payloadcms/plugin-seo";
 import { uploadthingStorage } from "@payloadcms/storage-uploadthing";
 import { buildConfig } from "payload";
@@ -98,7 +103,11 @@ export default buildConfig({
 						];
 					},
 				}),
+				FixedToolbarFeature(),
+				HeadingFeature({ enabledHeadingSizes: ["h1", "h2", "h3", "h4"] }),
+				OrderedListFeature(),
 				UnderlineFeature(),
+				UnorderedListFeature(),
 			];
 		},
 	}),
@@ -109,6 +118,32 @@ export default buildConfig({
 	}),
 	globals: [],
 	plugins: [
+		formBuilderPlugin({
+			fields: {
+				payment: false,
+			},
+			formOverrides: {
+				fields: ({ defaultFields }) => {
+					return defaultFields.map((field) => {
+						if ("name" in field && field.name === "confirmationMessage") {
+							return {
+								...field,
+								editor: lexicalEditor({
+									features: ({ rootFeatures }) => {
+										return [
+											...rootFeatures,
+											FixedToolbarFeature(),
+											HeadingFeature({ enabledHeadingSizes: ["h2", "h3", "h4"] }),
+										];
+									},
+								}),
+							};
+						}
+						return field;
+					});
+				},
+			},
+		}),
 		seoPlugin({
 			/* generateTitle, generateURL */
 		}),
