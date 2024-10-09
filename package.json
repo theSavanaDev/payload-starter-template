@@ -44,7 +44,10 @@
 		"tailwindcss-animate": "^1.0.7"
 	},
 	"devDependencies": {
+		"@next/eslint-plugin-next": "^13.5.7",
+		"@payloadcms/eslint-config": "^1.1.1",
 		"@tailwindcss/typography": "^0.5.15",
+		"@types/escape-html": "^1.0.4",
 		"@types/jsonwebtoken": "^9.0.7",
 		"@types/node": "^22.7.5",
 		"@types/react": "npm:types-react@19.0.0-rc.0",
