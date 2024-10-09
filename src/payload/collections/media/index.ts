@@ -1,3 +1,10 @@
+import {
+	HTMLConverterFeature,
+	InlineToolbarFeature,
+	lexicalEditor,
+	lexicalHTML,
+} from "@payloadcms/richtext-lexical";
+
 import { anyone } from "@/payload-access/anyone";
 import { authenticated } from "@/payload-access/authenticated";
 
@@ -10,7 +17,7 @@ const Media: CollectionConfig = {
 		plural: "Media",
 	},
 	admin: {
-		defaultColumns: ["filename", "alt", "mimeType"],
+		defaultColumns: ["filename", "mimeType", "alt", "caption"],
 	},
 	access: {
 		create: authenticated,
@@ -24,6 +31,17 @@ const Media: CollectionConfig = {
 			type: "text",
 			required: true,
 		},
+		{
+			name: "caption",
+			type: "richText",
+			editor: lexicalEditor({
+				features: ({ rootFeatures }) => {
+					return [...rootFeatures, HTMLConverterFeature({}), InlineToolbarFeature()];
+				},
+			}),
+		},
+		/* converts the referenced lexical richText field into HTML */
+		lexicalHTML("caption", { name: "caption_html" }),
 	],
 	upload: {
 		mimeTypes: ["image/*"],
