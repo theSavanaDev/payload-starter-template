@@ -1,11 +1,11 @@
 import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
-import LayoutContainer from "@/components/layout-container";
+import { Container } from "@/components/container";
 
 const NotFound = () => {
 	return (
-		<LayoutContainer>
+		<Container>
 			<div className="py-64">
 				<div className="prose max-w-none">
 					<h1 style={{ marginBottom: 0 }}>404</h1>
@@ -16,7 +16,7 @@ const NotFound = () => {
 					<Link href="/">Go Home</Link>
 				</Button>
 			</div>
-		</LayoutContainer>
+		</Container>
 	);
 };
 

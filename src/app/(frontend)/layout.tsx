@@ -1,3 +1,4 @@
+import { ReactNode } from "react";
 import { Inter as FontSans } from "next/font/google";
 
 import { cn } from "@/lib/utils";
@@ -8,7 +9,7 @@ import "@/frontend/global.css";
 
 const fontSans = FontSans({ subsets: ["latin"], variable: "--font-sans" });
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({ children }: { children: ReactNode }) {
 	return (
 		<html lang="en" suppressHydrationWarning>
 			<body
@@ -16,7 +17,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 			>
 				<ThemeProvider
 					attribute="class"
-					defaultTheme="light"
+					defaultTheme="dark"
 					enableSystem
 					disableTransitionOnChange
 				>
